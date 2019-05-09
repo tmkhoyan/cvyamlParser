@@ -52,21 +52,29 @@ s =
 ```
 In readcvYaml a handy option is implemented to sort the data based on basename and numeric identifier. When using the sorting option entries that have a unique basename will be folded into multidimentional struct. This is very handy when you have similar datasets that belong to the same category or experimental condition etc. This is done like so:
 ```Matlab
-s = readcvYaml(../data/test_data.yaml,'sorrted')
+s = readcvYaml(../data/test_data.yaml,'sorted')
 s = 
   struct with fields:
 
         matA: [1×3 struct]
-readcvYaml('./data/test_data.yaml','sorted')
 ```
-The sorting then stores the matrices with matA basename in 3d strructure that can be accessed with:
+The sorting then stores the matrices with matA basename in 2d strructure that can be accessed with:
 ```Matlab
 s.matA(1).matA
 ```
 The numerical identifier does not have to be continuous, the sorting wil sort and store in ascending order. I.e.: A1, A2, A7, A12 and so forth. s.matA(1).index stores the numerical identifier.
 
-The parser will automatically identify the datatype of the stored variable and return this in the structure. It is able to handle all common types used in OpenCV and Matlab environments.
-Refer to the test_data.yaml and genyamlData.cpp see an example how the data is generated.
+The parser will automatically identify the datatype of the stored variable and return this in the structure. It is able to handle all common types used in OpenCV and Matlab environments. Common datatypes are that are returned from OpenCv to matlab: 
+
+```C++
+OpenCV 		--> 	Matlab  	--	sizeof 
+CV_8U ,CV_8US 	-->	int8_t(char)	--	1
+CV_16S,CV_16U	-->	short		--	2
+CV_32S		-->	int		--	4
+CV_32F		-->	float		--	4
+CV_64F		-->	double		--	4
+```
+Refer to the test_data.yaml and genyamlData.cpp see an example of how the data is generated.
 
 ## Benchmarking
  A benchmark results are provided for linux and osx platforms in folders linux and osx. The benchmark test were perfomed on standard Dell Optiplex 7400 and 2,3 GHz Intel Core i5 16G macbook, respectively. 
