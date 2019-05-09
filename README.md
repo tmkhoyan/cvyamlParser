@@ -7,7 +7,7 @@ The mexfile readcvYaml can be used to transfer data efficiently from OpenCV to M
 ### 1: go to mex folder
 
 ```bash
-	cd mex/
+cd mex/
 ```
 
 ### 2: invoke mex command with optimization flags:
@@ -35,8 +35,10 @@ addpath(pwd); savepath;
 From now the readcvYaml mex function should be accessible from any path in you matlab environment
 
 ### 4: Licence 
-Please refer to the licence file for information about code distribution, usage and copy rights. The code is provided under BSD 3-Clause License
-
+Please refer to the licence file for information about code distribution, usage and copy rights. The code is provided under BSD 3-Clause License. 
+Refer to the links below for additional licence info regarding OpenCV and Matlab:
+https://opencv.org/license/
+https://in.mathworks.com/pricing-licensing.html
 
 ## Usage
 call readcvYaml on the dataset of choice. The function takes as input the filename and the sort option. By default readcvYaml will parse the variables names listed in the yaml file and assign this to a structure with corresponding fields. E.g.:
@@ -108,7 +110,8 @@ genyamlData ../data/test_data.yaml
 
 ### 6: Run benchmark on you own pc:
 In folder benchmark a simple script is provided to run readcvYaml on your own data.
-Simply choose the number of iterations with N parameter and run benchmarktest_cvYaml.m
+Simply choose the number of iterations with N parameter and run benchmarktest_cvYaml.m. The benchmark was performed for 5x[1000x3] double, 5x[2000x3] float, 5x[2000x3] int, and 5x[3000] double, 5x[6000] float and 5x[6000] int vectors. See test_data.yaml for the actual dataset.
 
+Here the result of the benchmark test on linux Optiplex system. The sorting is slightly more expensive as expected but negligible for the current dataset.
 
 
