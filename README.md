@@ -74,7 +74,7 @@ CV_8U ,CV_8US 	-->	int8_t(char)	--	1
 CV_16S,CV_16U	-->	short		--	2
 CV_32S		-->	int		--	4
 CV_32F		-->	float		--	4
-CV_64F		-->	double		--	4
+CV_64F		-->	double		--	8
 ```
 The parser can convert vectors, matrices and single variables stored in yaml file. Although untested it should also work with xml files.
 Refer to the test_data.yaml and genyamlData.cpp see an example of how the data is generated.
