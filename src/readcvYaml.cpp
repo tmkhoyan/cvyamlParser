@@ -1,13 +1,42 @@
-// mex readcvYaml_benchmark_loop.cpp -I/usr/local/include/opencv4 -L/usr/local/lib/ -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_features2d -lopencv_imgcodecs
+/* BSD 3-Clause License
+ *  
+ *  Copyright (c) 2019, tmkhoyan (Tigran Mkhoyan)
+ *  All rights reserved.
+ *  
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions are met:
+ *  
+ *  1. Redistributions of source code must retain the above copyright notice, this
+ *     list of conditions and the following disclaimer.
+ *  
+ *  2. Redistributions in binary form must reproduce the above copyright notice,
+ *     this list of conditions and the following disclaimer in the documentation
+ *     and/or other materials provided with the distribution.
+ *  
+ *  3. Neither the name of the copyright holder nor the names of its
+ *     contributors may be used to endorse or promote products derived from
+ *     this software without specific prior written permission.
+ *  
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ *  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ *  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ *  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ *  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ *  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ *  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ *  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 
 /*
-Description: This code will run a simple benchmark test to parse cv. matrix from yaml file and output it to matlab
-compile with  mex readcvYaml_benchmark_single.cpp -I/ [path to cv includes] -L [path to cv libs] -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_features2d -lopencv_imgcodecs
- *_single 	: runs of 1 iteration. Pass the size of to-be-generated eigen matrix. Args: filename{charaaray} , niterations{scalar}
-example: readEigen_benchmark_loop('test.yml');
-
-Author: Tigran Mkhoyan
-Delft University of Technology 2019
+ * Description: 	This code will run a simple benchmark test to parse cv. matrix from yaml file and output it to matlab
+ * 					compile example mex readcvYaml.cpp -I/usr/local/include/opencv4 
+ *            											   -L/usr/local/lib/ -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_features2d -lopencv_imgcodecs
+ * 					example usage: 	readcvYaml('test.yaml');
+ *
+ * Author: 			Tigran Mkhoyan
+ * Email : 			t.mkhoyan@tudelft.nl
  */
 
 #include "mex.hpp"
