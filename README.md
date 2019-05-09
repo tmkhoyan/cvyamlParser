@@ -16,12 +16,12 @@ It's not necessary but goo to have, by default optimisation level2 is used.
  Make sure to link with the open cv library and include paths:
 
 ```bash
-		mex -v COPTIMFLAGS="-O3 -fwrapv -DNDEBUG" ../src/readcvYaml.cpp -I [path_to_includes] -L [path_to_lib]
+mex -v COPTIMFLAGS="-O3 -fwrapv -DNDEBUG" ../src/readcvYaml.cpp -I [path_to_includes] -L [path_to_lib]
 ```
-	e.g.:
+e.g.:
 
 ```bash
-		mex -v COPTIMFLAGS="-O3 -fwrapv -DNDEBUG" ../src/readcvYaml.cpp -I/usr/local/include/opencv4 -L/usr/local/lib/ -lopencv_core
+mex -v COPTIMFLAGS="-O3 -fwrapv -DNDEBUG" ../src/readcvYaml.cpp -I/usr/local/include/opencv4 -L/usr/local/lib/ -lopencv_core
 ```
 If mex was successful a verbose message will be printed in the console.
 	
@@ -30,7 +30,7 @@ If mex was successful a verbose message will be printed in the console.
 You do this the easiest by navigating to mex folder and calling:
 
 ```bash 
-	addpath(pwd); savepath;
+addpath(pwd); savepath;
 ```
 From now the readcvYaml mex function should be accessible from any path in you matlab environment
 
@@ -51,28 +51,28 @@ Please refer to the licence file for information about code distribution, usage 
 Go to src folder and compile genyamlData:
 
 ```bash
-		cd src
-		g++ -std=c++11 genyamlData.cpp -o genyamlData -I [path_to_cv_includes] [opencv_core_lib]
+cd src
+g++ -std=c++11 genyamlData.cpp -o genyamlData -I [path_to_cv_includes] [opencv_core_lib]
 ```
 e.g.: 
 
 ```bash
-	g++ -std=c++11 genyamlData.cpp -o genyamlData -I /usr/local/include/opencv4 -lopencv_core
+g++ -std=c++11 genyamlData.cpp -o genyamlData -I /usr/local/include/opencv4 -lopencv_core
 ```
 Then run with: 
 
 ```bash
- 	genyamlData [outout_path_of_yaml] 
+genyamlData [outout_path_of_yaml] 
 ```
 e.g.: 
 
 ```bash
- 	genyamlData ../data/test_data.yaml
+genyamlData ../data/test_data.yaml
 ```
 
 ### 6: Run benchmark on you own pc:
-	In folder benchmark a simple script is provided to run readcvYaml on your own data.
-	Simply choose the number of iterations with N parameter and run benchmarktest_cvYaml.m
+In folder benchmark a simple script is provided to run readcvYaml on your own data.
+Simply choose the number of iterations with N parameter and run benchmarktest_cvYaml.m
 
 
 
