@@ -1,6 +1,6 @@
 % /* BSD 3-Clause License
 %  *  
-%  *  Copyright (c) 2019, tmkhoyan
+%  *  Copyright (c) 2019, tmkhoyan (Tigran Mkhoyan)
 %  *  All rights reserved.
 %  *  
 %  *  Redistribution and use in source and binary forms, with or without

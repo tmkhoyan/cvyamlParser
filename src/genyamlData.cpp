@@ -86,7 +86,6 @@ for(auto mat: matsC)
 	randn(mat, Scalar(1), Scalar(5));
 
 //genererate vector 
-std::vector<string> vecString{"The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
 std::vector<double> vecA(matsA[0].rows*matsA[0].cols,0.0);
 std::vector<float> 	vecB(matsB[0].rows*matsB[0].cols,0.0);
 std::vector<int> 	vecC(matsC[0].rows*matsC[0].cols,0);
@@ -114,7 +113,6 @@ cout<< "storing data to: " << flname_out << endl;
 fs << "vecA" 		<< vecA;
 fs << "vecB" 		<< vecB;
 fs << "vecC" 		<< vecC;
-fs << "vStrings" 	<< vecString;
 
 fs << "myString" 	<< myString;
 fs << "myInt   "	<< myInt;
