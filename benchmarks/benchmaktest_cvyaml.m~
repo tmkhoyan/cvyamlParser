@@ -7,7 +7,8 @@
 f      = @readcvYaml;
 f_sh   = @readcvYaml;
 
-N        = 1000; 
+N        = 10000; 
+N        = 100; 
 flname   = '../test_data1.yaml';
 
 close all;
@@ -43,23 +44,26 @@ table1 = cell2table(data,'VariableNames',{'regular','sorted'},...
 
 %time plot 
 hd(1) = figure();
-% filter time data 
-%[b,a] = butter(8,0.1);
-[b,a] = butter(10,0.05);
+
+%% filter time data 
+[b,a] = butter(8,0.1);
 if numel(T.history)>24
     Tdata_u = rmoutliers([T.history, T_s.history])*1000;
     Tdata   = filtfilt(b,a,Tdata_u);
-    plot(Tdata_u,':','LineWidth',1); hold on;
-    h1 = plot(Tdata,'LineWidth',2);
+    h1 = plot([Tdata_u Tdata]);
+    tlegend = {'regular_u','sorted_u','regular', 'sorted'}; 
 else
     Tdata = rmoutliers([T.history, T_s.history])*1000;
     h1 = plot(Tdata);
+    tlegend = {'regular', 'sorted'};    
 end
-xlabel('iteration')
+xlabel('N iterations')
 ylabel('time [ms]')
-legend(h1,{'regular', 'sorted'})
-title(['comparison unsorted vs sorted time. N iterations=', num2str(N)]); 
-
+legend(h1,tlegend)
+title(['comparison unsorted vs sorted time. N iterations=', num2str(N)]);
+xlabel('N iterations')
+ylabel('time [ms]')
+title(['comparison unsorted vs sorted time. N iterations=', num2str(N)]);
 %box plot 
 hd(2) = figure();
 boxplot(rmoutliers([T.history, T_s.history])*1000,...
