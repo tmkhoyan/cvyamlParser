@@ -125,6 +125,17 @@ class MexFunction : public matlab::mex::Function {
 									cv::Mat mat; fs[key] >> mat; mat =  mat.t();	
 									// std::cout<< key << ": "<< mat.type() <<  mat.isContinuous()<< std::endl;
 									switch(mat.type()){
+										// case CV_32S : case CV_8U : case CV_8S : case CV_16U : case CV_16S : {
+										case CV_8U : case CV_8S : {
+												      int8_t vartype;
+												      S[0][key] = cvMat2TypedArray(vartype,mat);					
+												      break;
+											      }
+									    case CV_16U : case CV_16S : {
+												      short vartype;
+												      S[0][key] = cvMat2TypedArray(vartype,mat);					
+												      break;
+											      }
 										case CV_32S : {
 												      int vartype;
 												      S[0][key] = cvMat2TypedArray(vartype,mat);					
@@ -135,10 +146,10 @@ class MexFunction : public matlab::mex::Function {
 												      S[0][key] = cvMat2TypedArray(vartype,mat);					
 												      break;
 											      }
-										default : { //CV_64F
-												  double vartype;
-												  S[0][key] = cvMat2TypedArray(vartype,mat);	
-												  break;
+										default     : { //CV_64F
+													  double vartype;
+													  S[0][key] = cvMat2TypedArray(vartype,mat);	
+													  break;
 											  }
 									}
 									break;
@@ -216,6 +227,16 @@ class MexFunction : public matlab::mex::Function {
 									// if map create matrix --> read from yaml --> transpose to get correct ordering row major
 									cv::Mat mat; fs[key] >> mat; mat =  mat.t();	
 									switch(mat.type()){
+										case CV_8U : case CV_8S : {
+												      int8_t vartype;
+												      keyStructMap.at(baseKey)[indexCounter][baseKey] = cvMat2TypedArray(vartype,mat);					
+												      break;
+											      }
+										case CV_16U : case CV_16S : {
+												      short vartype;
+												      keyStructMap.at(baseKey)[indexCounter][baseKey] = cvMat2TypedArray(vartype,mat);					
+												      break;
+											      }										
 										case CV_32S : {
 												      int vartype;
 												      keyStructMap.at(baseKey)[indexCounter][baseKey] = cvMat2TypedArray(vartype,mat);					
@@ -327,34 +348,3 @@ class MexFunction : public matlab::mex::Function {
 			return tmpArray;
 		}
 };
-
-
-// CV_8U - 8-bit unsigned integers ( 0..255 )
-
-// CV_8S - 8-bit signed integers ( -128..127 )
-
-// CV_16U - 16-bit unsigned integers ( 0..65535 )
-
-// CV_16S - 16-bit signed integers ( -32768..32767 )
-
-// CV_32S - 32-bit signed integers ( -2147483648..2147483647 )
-
-// CV_32F - 32-bit floating-point numbers ( -FLT_MAX..FLT_MAX, INF, NAN )
-
-// CV_64F - 64-bit floating-point numbers ( -DBL_MAX..DBL_MAX, INF, NAN )
-
-// 8-bit unsigned integer (uchar)
-
-// 8-bit signed integer (schar)
-
-// 16-bit unsigned integer (ushort)
-
-// 16-bit signed integer (short)
-
-// 32-bit signed integer (int)
-
-// 32-bit floating-point number (float)
-
-// 64-bit floating-point number (double)
-
-// enum { CV_8U=0, CV_8S=1, CV_16U=2, CV_16S=3, CV_32S=4, CV_32F=5, CV_64F=6 };
