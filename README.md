@@ -84,7 +84,7 @@ Refer to the test_data.yaml and genyamlData.cpp see an example of how the data i
 
  To run the benchmark follow the steps:
 
-### 5: generate test data to test the function:
+### 1: generate test data to test the function:
 
 Go to src folder and compile genyamlData:
 
@@ -108,10 +108,11 @@ e.g.:
 genyamlData ../data/test_data.yaml
 ```
 
-### 6: Run benchmark on you own pc:
+### 2: Run benchmark on you own pc:
 In folder benchmark a simple script is provided to run readcvYaml on your own data.
 Simply choose the number of iterations with N parameter and run benchmarktest_cvYaml.m. The benchmark was performed for 5x[1000x3] double, 5x[2000x3] float, 5x[2000x3] int, and 5x[3000] double, 5x[6000] float and 5x[6000] int vectors. See test_data.yaml for the actual dataset.
 
 Here the result of the benchmark test on linux Optiplex system. The sorting is slightly more expensive as expected but negligible for the current dataset.
 
+![](benchmarks/linux/figs/time_comparison_N1000.pdf)
 
