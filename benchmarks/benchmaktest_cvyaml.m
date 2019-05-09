@@ -1,6 +1,6 @@
 % /* BSD 3-Clause License
 %  *  
-%  *  Copyright (c) 2019, tmkhoyan
+%  *  Copyright (c) 2019, tmkhoyan (Tigran Mkhoyan)
 %  *  All rights reserved.
 %  *  
 %  *  Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@ f      = @readcvYaml;
 f_sh   = @readcvYaml;
 
 N        = 1000; 
-flname   = '../test_data1.yaml';
+flname   = '../data/test_data.yaml';
 
 close all;
 %% unsorted

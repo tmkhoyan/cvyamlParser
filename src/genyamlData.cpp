@@ -32,6 +32,7 @@
 /*
  * Description: 	Helper function to generate yaml dataset in order to run bencmark with cvyamlParser
  * 					example compile: g++ -std=c++11 genyamlData.cpp -o genyamlData -I /usr/local/include/opencv4 -lopencv_core
+ *					then run with: genyamlData [outout_path_of_yaml]
  *
  * Author: 			Tigran Mkhoyan
  * Email : 			t.mkhoyan@tudelft.nl
@@ -56,17 +57,13 @@ inline void writeVecToFile(const std::vector<T> &v,const std::string &basename){
 		[&k,&basename](const T &mat){fs << (basename+std::to_string(k++)) << mat;});
 }
 
-// template <typename T>
-// inline void printVector(const std::vector <T> &v){
-//   int k =0;
-//   std::for_each(v.begin(),v.end(),
-//   [&k](const T &s){std::cout << k++ << ": " << s << std::endl;});
-// }
 
 int main(int argc, const char **argv){
 
-// open file storate riter
-fs.open(flname, cv::FileStorage::WRITE);
+std::string flname_out = argc>1? argv[1] : flname;
+
+// open file storate writer
+fs.open(flname_out, cv::FileStorage::WRITE);
 
 std::vector<cv::Mat> matsA(5,cv::Mat(1000,3,CV_64FC1)); //double
 std::vector<cv::Mat> matsB(5,cv::Mat(2000,3,CV_32FC1)); //double
@@ -89,7 +86,7 @@ for(auto mat: matsC)
 	randn(mat, Scalar(1), Scalar(5));
 
 //genererate vector 
-std::vector<string> vString{"The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+std::vector<string> vecString{"The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
 std::vector<double> vecA(matsA[0].rows*matsA[0].cols,0.0);
 std::vector<float> 	vecB(matsB[0].rows*matsB[0].cols,0.0);
 std::vector<int> 	vecC(matsC[0].rows*matsC[0].cols,0);
@@ -112,36 +109,18 @@ writeVecToFile(matsA,"matA");
 writeVecToFile(matsB,"matB");
 writeVecToFile(matsC,"matC");
 
+cout<< "storing data to: " << flname_out << endl;
 //write vector of data
 fs << "vecA" 		<< vecA;
 fs << "vecB" 		<< vecB;
 fs << "vecC" 		<< vecC;
-// fs << "vStrings" 	<< vString;
+fs << "vStrings" 	<< vecString;
 
 fs << "myString" 	<< myString;
 fs << "myInt   "	<< myInt;
 fs << "myFloat "	<< myFloat;
 fs << "myDouble" 	<< myDouble;
 
-Mat z = cv::Mat(20,3,CV_8U  ); 
-Mat z1 = cv::Mat(20,3,CV_8S  ); 
-Mat z2 = cv::Mat(20,3,CV_16S  );
-Mat z3 = cv::Mat(20,3,CV_16U  );
-Mat z4 = cv::Mat(20,3,CV_32S  );
-
-cout << z.elemSize()<<endl;
-cout << z1.elemSize()<<endl;
-cout << z2.elemSize()<<endl;
-cout << z3.elemSize()<<endl;
-cout << z4.elemSize()<<endl;
-
-cout << sizeof(schar) <<endl;
-cout << sizeof(uchar) <<endl;
-cout << sizeof(short) <<endl;
-cout << sizeof(ushort) <<endl;
 
 	return 0;
 }
-
-
-//g++ -std=c++11 genyamlData.cpp -o genyamlData -I /usr/local/include/opencv4 -lopencv_core 

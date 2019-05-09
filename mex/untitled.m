@@ -1,1 +1,0 @@
-COPTIMFLAGS="-O3 -fwrapv -DNDEBUG"
