@@ -115,5 +115,8 @@ Simply choose the number of iterations with N parameter and run benchmarktest_cv
 Here the result of the benchmark test on linux Optiplex system. The sorting is slightly more expensive as expected but negligible for the current dataset.
 
 ![](misc/time_data.png)
+Average t per iteration    |  Boxplot data
+:-------------------------:|:-------------------------:
+![](misc/time_data.png)    |  ![](misc/boxplot.png)
 
 
