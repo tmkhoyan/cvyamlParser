@@ -1,6 +1,6 @@
 # cvyamlParser
-A simple yaml parser for cv datatypes to Matlab using the new Matlab C++ Data API.
-The mexfile readcvYaml can be used to transfer data efficiently from OpenCV to Matlab. 
+A simple yaml parser for OpenCV datatypes to Matlab using the new Matlab C++ Data API.
+The mexfile readcvYaml can be used to transfer data efficiently from OpenCV to Matlab though yaml files. The parser is able to infer the correct datatype at runtime and return it in a corresponding Matlab structure. It uses the OpenCV filestorage class and was tested both in 3.4 as 4.0. Additionally the parser is able to fold indexed variables with same basename into a multidimentional structure. 
 
 ## Installation 
 
@@ -42,7 +42,7 @@ Please refer to the licence file for information about code distribution, usage 
 call readcvYaml on the dataset of choice. The function takes as input the filename and the sort option. By default readcvYaml will parse the variables names listed in the yaml file and assign this to a structure with corresponding fields. E.g.:
 
 ```Matlab
-s = readcvYaml(../data/test_data.yaml)
+s = readcvYaml('../data/test_data.yaml')
 s = 
   struct with fields:
 
@@ -52,7 +52,7 @@ s =
 ```
 In readcvYaml a handy option is implemented to sort the data based on basename and numeric identifier. When using the sorting option entries that have a unique basename will be folded into multidimentional struct. This is very handy when you have similar datasets that belong to the same category or experimental condition etc. This is done like so:
 ```Matlab
-s = readcvYaml(../data/test_data.yaml,'sorted')
+s = readcvYaml('../data/test_data.yaml','sorted')
 s = 
   struct with fields:
 
@@ -74,6 +74,7 @@ CV_32S		-->	int		--	4
 CV_32F		-->	float		--	4
 CV_64F		-->	double		--	4
 ```
+The parser can convert vectors, matrices and single variables stored in yaml file. Although untested it should also work with xml files.
 Refer to the test_data.yaml and genyamlData.cpp see an example of how the data is generated.
 
 ## Benchmarking
