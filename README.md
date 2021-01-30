@@ -37,7 +37,7 @@ e.g.:
 mex -v CXXFLAGS="\$CXXFLAGS -std=c++17" COPTIMFLAGS="-O3 -fwrapv -DNDEBUG" ../src/readcvYaml.cpp -I/usr/local/include/opencv4 -L/usr/local/lib/ -lopencv_core
 ```
 
-For Windows link to Pre-built libraries (set mex to VS compiler):
+For Windows link to Pre-built libraries. Ensure the to set path to OpenCv DLLs (available via https://opencv.org/) and set mex to VS compiler and compile:
 
 ```bash
 mex -v COMPFLAGS="$COMPFLAGS /std:c++17" COPTIMFLAGS="-O3 -fwrapv -DNDEBUG" ../src/readcvYaml_win.cpp -I"F:\opt\OpenCV-4.5.1\opencv\build\include" -L"F:\opt\OpenCV-4.5.1\opencv\build\x64\vc15\lib" -lopencv_world451 -lopencv_world451d
