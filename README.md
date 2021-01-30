@@ -209,7 +209,7 @@ Average t per iteration    |  Boxplot data
 ## Windows installation:
 
 General procedure to install OpenCV with Pre-built libraries:
-	- download libraries to local path e.g. F:\opt\OpenCV-4.5.1
+	- download libraries to local path (https://opencv.org/releases/) e.g. F:\opt\OpenCV-4.5.1
 	- set environment variable PATH to include the DLLs \opencv\build\x64\vc15\lib
 	- ensure to have latest VS Windows Visual Studio SDK. 
 	- In the VS installer app modify -> individual options -> add Windows Universal CRT SDK
