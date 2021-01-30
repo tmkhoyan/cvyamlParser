@@ -118,11 +118,11 @@ The sorting then stores the matrices with matA basename in 2d strructure that ca
 ```Matlab
 dataB.matA(4).matA
 
-%   6×12 single matrix
-% 
-%     50   960   168     0   960   168     0   960   166     0   962   162
-%      0   966   156     0   968   154     0   964   160     0   960   168
-%    ...
+   6×12 single matrix
+ 
+     50   960   168     0   960   168     0   960   166     0   962   162
+      0   966   156     0   968   154     0   964   160     0   960   168
+    ...
 ```
 Normally not allowed to be contructed directly via matlab but possible via C++ API. delimiter "_" stripts numbers from node names:
 ```Matlab
