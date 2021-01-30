@@ -4,6 +4,8 @@ The mexfile readcvYaml can be used to transfer data efficiently from OpenCV to M
 
 ## Installation UPDATE V2.0! : Windows support and multichannel matric support is added
 
+For basic usage see: (https://img.youtube.com/vi/jHjLLROfxhg/maxresdefault.jpg)](https://youtu.be/jHjLLROfxhg)
+
 In the latest update (v2.0) windows mex function and compile instructions are added. Additionally the parces is greatly improved, now allowing nested mixed structures (map,vector) and multichannel matrices. This allows to import raw image data directly from YAML file, however other practical use cases are possible with other data types using matrix container. List of updates:
 
 - Windows mex function
@@ -12,8 +14,6 @@ In the latest update (v2.0) windows mex function and compile instructions are ad
 - Automatic type deduction of nested structures
 - Delimiter option for sequences numbered structures
 - File extension safety
-
-For basic usage see: https://youtu.be/jHjLLROfxhg<cvyamlParser>
 
 ## Installation 
 
