@@ -1,22 +1,22 @@
 % /* BSD 3-Clause License
-%  *  
+%  *
 %  *  Copyright (c) 2019, tmkhoyan (Tigran Mkhoyan)
 %  *  All rights reserved.
-%  *  
+%  *
 %  *  Redistribution and use in source and binary forms, with or without
 %  *  modification, are permitted provided that the following conditions are met:
-%  *  
+%  *
 %  *  1. Redistributions of source code must retain the above copyright notice, this
 %  *     list of conditions and the following disclaimer.
-%  *  
+%  *
 %  *  2. Redistributions in binary form must reproduce the above copyright notice,
 %  *     this list of conditions and the following disclaimer in the documentation
 %  *     and/or other materials provided with the distribution.
-%  *  
+%  *
 %  *  3. Neither the name of the copyright holder nor the names of its
 %  *     contributors may be used to endorse or promote products derived from
 %  *     this software without specific prior written permission.
-%  *  
+%  *
 %  *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 %  *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 %  *  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,7 +28,7 @@
 %  *  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 %  *  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 %  */
-% 
+%
 % /*
 %  * Description: 	   Benchmark masterfile to run benchmarks for
 %  cvyamlParser
@@ -37,12 +37,12 @@
 %  * Email : 			t.mkhoyan@tudelft.nl
 %  */
 
-%% function handles
+%% function handles (ensure to copy mexfiles here)
 f      = @readcvYaml;
 f_sh   = @readcvYaml;
 
-N        = 1000; 
-flname   = '../data/test_data.yaml';
+N        = 1000;
+flname   = '../data/rand_test_data.yaml';
 
 close all;
 %% unsorted
@@ -50,7 +50,7 @@ close all;
 % readcvYaml_struct_cases: no unique sorting
 T = benchmarkFunc(f,N,flname);
 
-%% sorted 
+%% sorted
 sort_opt = 'sorted';
 
 % readcvYaml_struct_cases_unique: has unique sorting
@@ -64,20 +64,20 @@ data(end,:,:) = [];
 data = reshape(data,6,2,1);
 
 table1 = cell2table(data,'VariableNames',{'regular','sorted'},...
-'RowNames',...
-{  'averagetimeMsec'...
-       'maxtimeMsec'...
-       'mintimeMsec'...
-       'averagetime'...
-           'maxtime'...
-            'mintime'});
+    'RowNames',...
+    {  'averagetimeMsec'...
+    'maxtimeMsec'...
+    'mintimeMsec'...
+    'averagetime'...
+    'maxtime'...
+    'mintime'});
 
 
 %% plotting
 
-%time plot 
+%time plot
 hd(1) = figure();
-% filter time data 
+% filter time data
 %[b,a] = butter(8,0.1);
 [b,a] = butter(10,0.05);
 if numel(T.history)>24
@@ -92,9 +92,9 @@ end
 xlabel('iteration')
 ylabel('time [ms]')
 legend(h1,{'regular', 'sorted'})
-title(['comparison unsorted vs sorted time. N iterations=', num2str(N)]); 
+title(['comparison unsorted vs sorted time. N iterations=', num2str(N)]);
 
-%box plot 
+%box plot
 hd(2) = figure();
 boxplot(rmoutliers([T.history, T_s.history])*1000,...
     'Labels', {'regular', 'sorted'},...
@@ -104,13 +104,20 @@ title(['comparison unsorted vs sorted boxplot. N iterations=', num2str(N)]);
 
 %% save output
 %determine system
-[~,OS] = system('uname');
-if  strcmpi(strtrim(OS),'Darwin')
-    basedir = 'osx';
-elseif strcmpi(strtrim(OS),'Linux')
-    basedir = 'linux';
-end
+if ispc
+    basedir = 'win';
+else
+    [~,OS] = system('uname');
+    if  strcmpi(strtrim(OS),'Darwin')
+        basedir = 'osx';
+    elseif strcmpi(strtrim(OS),'Linux')
+        basedir = 'linux';
+    end
     
+end
+
+mkdir(basedir);
+
 save([basedir, '/benchmark.mat']);
 
 fignames = {
@@ -118,8 +125,11 @@ fignames = {
     'boxplot_comparison'
     };
 
-FolderName = [basedir,'/figs/']; 
+FolderName = [basedir,'/figs/'];
 fignames = strcat(FolderName,fignames,'_N',num2str(N),'.pdf');
+
+mkdir(FolderName);
+
 for n=1:numel(fignames)
-saveas(hd(n), fignames{n}); 
+    saveas(hd(n), fignames{n});
 end

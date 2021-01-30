@@ -1,8 +1,0 @@
-To fix libstdc++ issue with mex compiling:
-
-subl .bashrc
-
-force matlab to load system default libstdc++ put at end:
-
-alias matlab="LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6 /usr/local/bin/matlab"
-

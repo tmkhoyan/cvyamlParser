@@ -1,0 +1,1 @@
+mex -v COMPFLAGS="$COMPFLAGS /std:c++11" COPTIMFLAGS="-O3 -fwrapv -DNDEBUG" "../src/readcvYaml.cpp" -I"F:\opt\OpenCV-4.5.1\opencv\build\include" -L"F:\opt\OpenCV-4.5.1\opencv\build\x64\vc15\lib" -lopencv_world451 -lopencv_world451d
