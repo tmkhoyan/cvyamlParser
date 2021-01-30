@@ -206,13 +206,13 @@ Average t per iteration    |  Boxplot data
 :-------------------------:|:-------------------------:
 ![](misc/time_data.png)    |  ![](misc/boxplot.png)
 
-## Windows installation:
+### Windows installation:
 
 General procedure to install OpenCV with Pre-built libraries:
-	- download libraries to local path (https://opencv.org/releases/) e.g. F:\opt\OpenCV-4.5.1
-	- set environment variable PATH to include the DLLs \opencv\build\x64\vc15\lib
-	- ensure to have latest VS Windows Visual Studio SDK. 
-	- In the VS installer app modify -> individual options -> add Windows Universal CRT SDK
-	- set mex compiler to VS -> mex -setup -> VS
-	- link libraries and provide include path to mex: -I"[dir]\opencv\build\include" -L"[dir]\opencv\build\x64\vc15\lib"
-	- dependencies: -lopencv_world451 -lopencv_world451d
+- download libraries to local path (https://opencv.org/releases/) e.g. F:\opt\OpenCV-4.5.1
+- set environment variable PATH to include the DLLs \opencv\build\x64\vc15\lib
+- ensure to have latest VS Windows Visual Studio SDK. 
+- In the VS installer app modify -> individual options -> add Windows Universal CRT SDK
+- set mex compiler to VS -> mex -setup -> VS
+- link libraries and provide include path to mex: -I"[dir]\opencv\build\include" -L"[dir]\opencv\build\x64\vc15\lib"
+- dependencies: -lopencv_world451 -lopencv_world451d
