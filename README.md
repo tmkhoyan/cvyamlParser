@@ -2,7 +2,7 @@
 A simple yaml parser for OpenCV datatypes to Matlab using the new Matlab C++ Data API.
 The mexfile readcvYaml can be used to transfer data efficiently from OpenCV to Matlab though yaml files. The parser is able to infer the correct datatype at runtime and return it in a corresponding Matlab structure. It uses the OpenCV filestorage class and was tested both in 3.4 as 4.0. Additionally the parser is able to fold indexed variables with same basename into a multidimentional structure. 
 
-## Installation UPDATE V2.0! : Windows support and multichannel matric support is added
+## UPDATE V2.0! : Windows support and multichannel matrix support is added
 
 [![For basic usage see:](https://img.youtube.com/vi/jHjLLROfxhg/maxresdefault.jpg)](https://youtu.be/jHjLLROfxhg)
 
