@@ -55,7 +55,8 @@ addpath(pwd); savepath;
 From now the readcvYaml mex function should be accessible from any path in you matlab environment
 
 ### 4 : References
-Please use the following DOI to cite cvyamlParser: [![DOI](https://zenodo.org/badge/184505001.svg)](https://zenodo.org/badge/latestdoi/184505001)]
+Please use the following DOI to cite cvyamlParser: 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4482249.svg)](https://doi.org/10.5281/zenodo.4482249)
 
 ### 5: Licence 
 Please refer to the licence file for information about code distribution, usage and copy rights. The code is provided under BSD 3-Clause License. 
