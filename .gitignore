@@ -1,0 +1,10 @@
+.DS_Store
+
+mex/build
+mex/Release
+mex/Debug
+
+*.o
+*.obj
+
+*~
